@@ -34,7 +34,8 @@ const commands = {
 
   "ls projects": () => {
     return `
-      Battery simulator    <a href="https://github.com/isak-sk/battery_sim.git" target="_blank">GitHub Repo</a><br>
+      Battery simulator     <a href="https://github.com/isak-sk/battery_sim.git" target="_blank">GitHub Repo</a>
+      <br>
       ascii-renderer       <span>coming soon...</span>`;
   },
 
@@ -89,7 +90,7 @@ input.addEventListener("keypress", function (e) {
     }
 
     // Append the user command and the result to the output
-    output.textContent += `> ${cmd}\n${result}\n\n`;
+    output.innerHTML += `> ${cmd}<br>${result.replace(/\n/g, "<br>")}<br><br>`;
 
     // Clear input and scroll to bottom
     input.value = "";
