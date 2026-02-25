@@ -58,17 +58,21 @@ const commands = {
 
 };
 
-input.addEventListener("keydown", function(e) {
+// Focus input on click anywhere in terminal
+document.querySelector(".terminal").addEventListener("click", () => input.focus());
+
+// Handle Enter key
+input.addEventListener("keypress", function(e) {
   if (e.key === "Enter") {
     const cmd = input.value.trim();
-    if (!cmd) return; // ignore empty input
-    
-    let result = commands[cmd] || (cmd.startsWith("sudo ") ? commands.sudo() : `Command not found: ${cmd}`);
-    
-    output.innerHTML += `&gt; ${cmd}<br>${result}<br>`;
-    
+    if (!cmd) return;
+
+    let result;
+    if (cmd.startsWith("sudo ")) result = commands.sudo();
+    else result = commands[cmd] || `Command not found: ${cmd}`;
+
+    output.textContent += `> ${cmd}\n${result}\n`;
     input.value = "";
-    
     window.scrollTo(0, document.body.scrollHeight);
   }
 });

@@ -6,7 +6,7 @@ body {
 }
 
 .terminal {
-  max-width: 800px;
+  max-width: 1200px;
 }
 
 input {
@@ -18,14 +18,3 @@ input {
   font-size: inherit;
 }
 
-.cursor {
-  display: inline-block;
-  width: 10px;
-  background-color: #00ff88;
-  animation: blink 1s infinite;
-  vertical-align: middle;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
