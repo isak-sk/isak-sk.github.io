@@ -10,6 +10,7 @@ const commands = {
       - ls projects   # Check out my side projects
       - date          # Current system time
       - fortune       # Random dev wisdom / jokes
+      - clear         # Wipe the terminal clean
       - sudo <cmd>    # You probably shouldn’t…`;
   },
 
@@ -24,7 +25,7 @@ const commands = {
   "ls skills": () => {
     return `
       python/    # favorite language for quick stuff
-      c_cpp/     # looooow level 
+      c_cpp/     # looooow level
       rust/      # still learning this one... tricky
       bash/      # i love automating anything and everything
       sql/       # relational genius
@@ -46,32 +47,51 @@ const commands = {
       "There’s no place like 127.0.0.1",
       "rm -rf /? Never try this at home",
       "Debugging: Where you spend 90% of your time fixing bugs you didn’t write",
-      "Programmer (noun): Machine that turns monster energy drinks into code"
-      "\"just accept it twin\" -good friend"
+      "Programmer (noun): Machine that turns monster energy drinks into code",
+      '"just accept it twin" -good friend',
     ];
 
     return quotes[Math.floor(Math.random() * quotes.length)];
-
   },
 
-  sudo: () => "Haha nice try. You don’t have permissions."
+  sudo: () => "Haha nice try. You don’t have permissions.",
 
+  // The logic for clear is handled in the listener,
+  // but I keep the key here for consistency.
+  clear: () => "",
 };
 
 // Focus input on click anywhere in terminal
-document.querySelector(".terminal").addEventListener("click", () => input.focus());
+document
+  .querySelector(".terminal")
+  .addEventListener("click", () => input.focus());
 
 // Handle Enter key
-input.addEventListener("keypress", function(e) {
+input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     const cmd = input.value.trim();
     if (!cmd) return;
 
     let result;
-    if (cmd.startsWith("sudo ")) result = commands.sudo();
-    else result = commands[cmd] || `Command not found: ${cmd}`;
 
-    output.textContent += `> ${cmd}\n${result}\n`;
+    if (cmd === "clear") {
+      output.textContent = "";
+      input.value = "";
+      return; // Exit early since I don't want to print anything
+    }
+
+    if (cmd.startsWith("sudo ")) {
+      result = commands.sudo();
+    } else if (typeof commands[cmd] === "function") {
+      result = commands[cmd]();
+    } else {
+      result = `Command not found: ${cmd}`;
+    }
+
+    // Append the user command and the result to the output
+    output.textContent += `> ${cmd}\n${result}\n\n`;
+
+    // Clear input and scroll to bottom
     input.value = "";
     window.scrollTo(0, document.body.scrollHeight);
   }
