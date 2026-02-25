@@ -9,7 +9,20 @@ body {
   max-width: 800px;
 }
 
+input {
+  background: none;
+  border: none;
+  color: #00ff88;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  width: 90%;
+}
+
 .cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: #00ff88;
   animation: blink 1s infinite;
 }
 

@@ -7,14 +7,11 @@
 </head>
 <body>
   <div class="terminal">
-    <p>> whoami</p>
-    <p>Isak Skoog</p>
-    <p>Backend Developer</p>
-    <br />
-    <p>> ls projects</p>
-    <p>- coming-soon</p>
-    <br />
-    <p class="cursor">█</p>
+    <div id="output"></div>
+    <div class="input-line">
+	<span>&gt; </span><input type="text" id="command" autofocus autocomplete="off">
+    </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
