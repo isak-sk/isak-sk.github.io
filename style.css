@@ -16,7 +16,6 @@ input {
   outline: none;
   font-family: inherit;
   font-size: inherit;
-  width: 90%;
 }
 
 .cursor {
@@ -24,6 +23,7 @@ input {
   width: 10px;
   background-color: #00ff88;
   animation: blink 1s infinite;
+  vertical-align: middle;
 }
 
 @keyframes blink {

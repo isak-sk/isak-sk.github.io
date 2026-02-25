@@ -61,10 +61,9 @@ const commands = {
 input.addEventListener("keydown", function(e) {
   if (e.key === "Enter") {
     const cmd = input.value.trim();
+    if (!cmd) return; // ignore empty input
     
-    let result = commands[cmd] || `Command not found: ${cmd}`;
-    
-    if (cmd.startsWith("sudo ")) result = commands.sudo();
+    let result = commands[cmd] || (cmd.startsWith("sudo ") ? commands.sudo() : `Command not found: ${cmd}`);
     
     output.innerHTML += `&gt; ${cmd}<br>${result}<br>`;
     
