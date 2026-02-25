@@ -34,7 +34,7 @@ const commands = {
 
   "ls projects": () => {
     return `
-      Battery simulator     <a href="https://github.com/isak-sk/battery_sim.git" target="_blank">GitHub Repo</a>
+      Battery simulator    <a href="https://github.com/isak-sk/battery_sim.git" target="_blank">GitHub Repo</a>
       ascii-renderer       <span>coming soon...</span>`;
   },
 
