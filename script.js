@@ -82,30 +82,20 @@ function renderWhoami() {
 
 function renderSkills() {
   const skills = [
-    { name: "python", pips: 5, comment: "# daily driver, scripting to prod" },
-    { name: "bash", pips: 5, comment: "# automate all the things" },
-    { name: "c/c++", pips: 4, comment: "# low level, embedded, fast" },
-    { name: "sql", pips: 4, comment: "# relational genius" },
-    { name: "linux", pips: 5, comment: "# btw i use arch" },
-    {
-      name: "rust",
-      pips: 2,
-      comment: "# learning… borrow checker is humbling",
-    },
-    { name: "docker", pips: 3, comment: "# containers, homelab staple" },
-    { name: "git", pips: 4, comment: "# git blame is always me" },
+    { name: "python", comment: "# daily driver, scripting to prod" },
+    { name: "bash", comment: "# automate all the things" },
+    { name: "c", comment: "# low level, embedded, fast" },
+    { name: "sql", comment: "# relational genius" },
+    { name: "linux", comment: "# btw i use fedora (on my laptop arch)" },
+    { name: "rust", comment: "# still learning, borrow checker is humbling" },
+    { name: "docker", comment: "# containers, homelab staple" },
+    { name: "git", comment: "# git blame is always me" },
   ];
+
   let html = `<div class="label">TECH STACK</div>\n`;
   for (const s of skills) {
-    const filled = Array(s.pips)
-      .fill('<span class="skill-pip filled"></span>')
-      .join("");
-    const empty = Array(5 - s.pips)
-      .fill('<span class="skill-pip"></span>')
-      .join("");
     html += `<div class="skill-row">
   <span class="skill-name">${s.name}</span>
-  <span class="skill-bar">${filled}${empty}</span>
   <span class="skill-comment">${s.comment}</span>
 </div>\n`;
   }
@@ -252,15 +242,15 @@ function renderSudo() {
 }
 
 function renderNeofetch() {
-  return `<span style="color:var(--blue)">      _____                    </span>   <span class="highlight">iskoog</span><span class="dimmed">@</span><span class="highlight">iskoog.dev</span>
-<span style="color:var(--blue)">     /   __\___  ___  __  __   </span>   <span class="dimmed">──────────────────────</span>
-<span style="color:var(--blue)">    /   /  / _ \/ _ \/ / / /  </span>   <span class="dimmed">OS:</span>     Fedora Linux 41 x86_64
-<span style="color:var(--blue)">   / /\  \/ ___/ // / /_/ /   </span>   <span class="dimmed">Shell:</span>  zsh 5.9
-<span style="color:var(--blue)">  / /  \__\___/\___/\__/_/    </span>   <span class="dimmed">Lang:</span>   Python / Rust / C
-<span style="color:var(--blue)"> /_/    fedora                 </span>   <span class="dimmed">Editor:</span> nvim (obviously)
-                                   <span class="dimmed">WM:</span>     i3 / sway
-<span style="color:var(--green)">  ██</span><span style="color:var(--blue)">██</span><span style="color:var(--amber)">██</span><span style="color:var(--red)">██</span><span style="color:var(--text-dim)">████</span>             <span class="dimmed">Theme:</span>  gruvbox-dark
-                                   <span class="dimmed">Mood:</span>   <span class="accent">caffeinated</span>`;
+  return `<span style="color:var(--blue)">        _____         </span>   <span class="highlight">iskoog</span><span class="dimmed">@</span><span class="highlight">iskoog.dev</span>
+<span style="color:var(--blue)">       /     \        </span>   <span class="dimmed">──────────────────────</span>
+<span style="color:var(--blue)">      / ____ /  __ \  </span>   <span class="dimmed">OS:</span>     Fedora Linux 41 x86_64
+<span style="color:var(--blue)">     / /    /  /  \ \ </span>   <span class="dimmed">Shell:</span>  zsh 5.9
+<span style="color:var(--blue)">    / /____/ __/  / / </span>   <span class="dimmed">Lang:</span>   Python / Rust / C
+<span style="color:var(--blue)">   /______/      /_/  </span>   <span class="dimmed">Editor:</span> vim (obviously)
+<span style="color:var(--blue)">     fedora            </span>   <span class="dimmed">WM:</span>     i3 / sway
+                           <span class="dimmed">Theme:</span>  gruvbox-dark
+<span style="color:var(--green)">  ██</span><span style="color:var(--blue)">██</span><span style="color:var(--amber)">██</span><span style="color:var(--red)">██</span><span style="color:var(--text-dim)">████</span>       <span class="dimmed">Mood:</span>   <span class="accent">caffeinated</span>`;
 }
 
 function renderContact() {
