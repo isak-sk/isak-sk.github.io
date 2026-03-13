@@ -115,25 +115,51 @@ function renderSkills() {
 function renderProjects() {
   return `<div class="label">PROJECTS</div>
 <div class="project-card">
-  <div class="project-name">epidemic-sim</div>
-  <div class="project-desc">Finals project — realistic SIR model epidemic simulation. Built for Komvux Alingsås mathematics finals.</div>
+  <div class="project-name">cli-launcher</div>
+  <div class="project-desc">A CLI application launcher written in Rust. Fast, minimal, does what it says.</div>
   <div class="project-links">
-    <a href="https://github.com/isak-sk/epidemic-sim" target="_blank">github →</a>
-    <span class="accent" style="font-size:11px">Feb 2026 – present</span>
+    <a href="https://github.com/isak-sk/cli_launcher" target="_blank">github →</a>
+    <span style="font-size:11px;color:var(--text-dim)">Rust</span>
   </div>
 </div>
 <div class="project-card">
   <div class="project-name">battery-sim</div>
-  <div class="project-desc">Battery behaviour simulator — modelling charge/discharge curves and degradation over time. Python.</div>
+  <div class="project-desc">Battery storage simulator written in Rust. Models behaviour and outcomes against multiple years of real grid data.</div>
   <div class="project-links">
-    <a href="https://github.com/isak-sk/battery_sim.git" target="_blank">github →</a>
+    <a href="https://github.com/isak-sk/battery_sim" target="_blank">github →</a>
+    <span style="font-size:11px;color:var(--text-dim)">Rust</span>
   </div>
 </div>
 <div class="project-card">
-  <div class="project-name">ascii-renderer</div>
-  <div class="project-desc">Real-time ASCII art renderer. Still cooking…</div>
+  <div class="project-name">PowerMatch</div>
+  <div class="project-desc">Real-time energy game — match your live power output to a dynamically shifting target curve. Precision-based.</div>
   <div class="project-links">
-    <span class="accent">coming soon</span>
+    <a href="https://github.com/isak-sk/PowerMatch" target="_blank">github →</a>
+    <span style="font-size:11px;color:var(--text-dim)">Vue · archived</span>
+  </div>
+</div>
+<div class="project-card">
+  <div class="project-name">epidemic-sim</div>
+  <div class="project-desc">SIR model epidemic simulation. Built for Komvux mathematics finals (WIP).</div>
+  <div class="project-links">
+    <a href="https://github.com/isak-sk/epidemic-sim" target="_blank">github →</a>
+    <span style="font-size:11px;color:var(--text-dim)">Python</span>
+  </div>
+</div>
+<div class="project-card">
+  <div class="project-name">influxdb-trmnl-plugin</div>
+  <div class="project-desc">TRMNL e-ink display plugin that pulls data from InfluxDB. Classic homelab glue code.</div>
+  <div class="project-links">
+    <a href="https://github.com/isak-sk/influxdb_trmnl_plugin" target="_blank">github →</a>
+    <span style="font-size:11px;color:var(--text-dim)">Python</span>
+  </div>
+</div>
+<div class="project-card">
+  <div class="project-name">dotfiles</div>
+  <div class="project-desc">Config files for my setup. The usual suspects — zsh, nvim, i3, and whatever else needs taming.</div>
+  <div class="project-links">
+    <a href="https://github.com/isak-sk/dotfiles" target="_blank">github →</a>
+    <span style="font-size:11px;color:var(--text-dim)">Shell</span>
   </div>
 </div>
 <div class="project-card">
