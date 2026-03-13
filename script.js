@@ -116,7 +116,7 @@ function renderProjects() {
   return `<div class="label">PROJECTS</div>
 <div class="project-card">
   <div class="project-name">cli-launcher</div>
-  <div class="project-desc">A CLI application launcher written in Rust. Fast, minimal, does what it says.</div>
+  <div class="project-desc">Rust learning project: A CLI application launcher written in Rust. Fast, minimal, does what it says.</div>
   <div class="project-links">
     <a href="https://github.com/isak-sk/cli_launcher" target="_blank">github →</a>
     <span style="font-size:11px;color:var(--text-dim)">Rust</span>
@@ -132,7 +132,7 @@ function renderProjects() {
 </div>
 <div class="project-card">
   <div class="project-name">PowerMatch</div>
-  <div class="project-desc">Real-time energy game — match your live power output to a dynamically shifting target curve. Precision-based.</div>
+  <div class="project-desc">Real-time energy game: match your live power output to a dynamically shifting target curve. Precision-based.</div>
   <div class="project-links">
     <a href="https://github.com/isak-sk/PowerMatch" target="_blank">github →</a>
     <span style="font-size:11px;color:var(--text-dim)">Vue · archived</span>
