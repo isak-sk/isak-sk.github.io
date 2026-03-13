@@ -56,21 +56,21 @@ function renderWhoami() {
 </div>
 <div class="label">IDENTITY</div>
 <span class="highlight">  Isak Skoog</span>
-  Software Engineer · Gothenburg, Sweden 🇸🇪
+  Software Engineer · Gothenburg, Sweden
   <span class="dimmed">@ Silverbeard Engineering AB</span>
 
 <div class="label" style="margin-top:10px">ABOUT</div>
 <span class="dimmed">  Software engineer. Linux enthusiast. Open source contributor.</span>
-<span class="dimmed">  Loves declarative code, logical problems, 2am debugging,</span>
+<span class="dimmed">  Loves low level code, logical problems, 2am debugging,</span>
 <span class="dimmed">  homelabs, and nerd stuff. Hates vibe coding.</span>
 
 <div class="label" style="margin-top:10px">LANGUAGES</div>
 <span class="accent">  EN</span> <span class="dimmed">Native / bilingual</span>
 <span class="accent">  DE</span> <span class="dimmed">Native / bilingual</span>
-<span class="accent">  SV</span> <span class="dimmed">Conversational</span>
+<span class="accent">  SV</span> <span class="dimmed">Native / bilingual</span>
 
 <div class="label" style="margin-top:10px">OPINIONS</div>
-<span class="accent">  ✓</span> declarative > imperative
+<span class="accent">  ✓</span> low level > abstractions
 <span class="accent">  ✓</span> good docs are not optional
 <span class="accent">  ✓</span> automate everything boring
 <span class="error">  ✗</span> "vibe coding"
@@ -195,7 +195,9 @@ function renderEducation() {
 
 <div class="label" style="margin-top:12px">CERTIFICATIONS</div>
 <span class="dimmed">  Cambridge B2 English</span> <span class="accent">·</span> <span class="dimmed">Cambridge University Press & Assessment — Jun 2019</span>
-<span class="dimmed">  Technical Support Fundamentals</span> <span class="accent">·</span> <span class="dimmed">Google — Dec 2019</span>`;
+<span class="dimmed">  Google IT Support Professional Certificate</span> <span class="accent">·</span> <span class="dimmed">Google — Dec 2019</span>
+<span class="dimmed">  Financial markets online course</span> <span class="accent">·</span> <span class="dimmed">Yale University (Coursera) - May 2023</span>
+<span class="dimmed">  5G Network Architecture and Protocols</span> <span class="accent">·</span> <span class="dimmed">LearnQuest - Oct 2025</span>`;
 }
 
 function renderDate() {
@@ -224,15 +226,15 @@ function renderSudo() {
 }
 
 function renderNeofetch() {
-  return `<span style="color:var(--green)">   _____ _                   </span>   <span class="highlight">iskoog</span><span class="dimmed">@</span><span class="highlight">dev</span>
-<span style="color:var(--green)">  |_   _(_)__ __ ___ ___  __ </span>   <span class="dimmed">────────────────</span>
-<span style="color:var(--green-dim)">    | | | (_-&lt;/ _/ _ \/ _ \/ _|</span>   <span class="dimmed">OS:</span>     Arch Linux x86_64
-<span style="color:var(--green-dim)">    |_| |_/__/\__\___/\___/\__|</span>   <span class="dimmed">Shell:</span>  bash 5.2
-                                  <span class="dimmed">Lang:</span>   Python / Rust / C
-<span class="dimmed">  isak@iskoog.dev</span>               <span class="dimmed">Editor:</span> vim (obviously)
-                                  <span class="dimmed">WM:</span>     i3 / sway
-                                  <span class="dimmed">Theme:</span>  gruvbox-dark
-                                  <span class="dimmed">Mood:</span>   <span class="accent">caffeinated</span>`;
+  return `<span style="color:var(--blue)">      _____                    </span>   <span class="highlight">iskoog</span><span class="dimmed">@</span><span class="highlight">iskoog.dev</span>
+<span style="color:var(--blue)">     /   __\___  ___  __  __   </span>   <span class="dimmed">──────────────────────</span>
+<span style="color:var(--blue)">    /   /  / _ \/ _ \/ / / /  </span>   <span class="dimmed">OS:</span>     Fedora Linux 41 x86_64
+<span style="color:var(--blue)">   / /\  \/ ___/ // / /_/ /   </span>   <span class="dimmed">Shell:</span>  zsh 5.9
+<span style="color:var(--blue)">  / /  \__\___/\___/\__/_/    </span>   <span class="dimmed">Lang:</span>   Python / Rust / C
+<span style="color:var(--blue)"> /_/    fedora                 </span>   <span class="dimmed">Editor:</span> nvim (obviously)
+                                   <span class="dimmed">WM:</span>     i3 / sway
+<span style="color:var(--green)">  ██</span><span style="color:var(--blue)">██</span><span style="color:var(--amber)">██</span><span style="color:var(--red)">██</span><span style="color:var(--text-dim)">████</span>             <span class="dimmed">Theme:</span>  gruvbox-dark
+                                   <span class="dimmed">Mood:</span>   <span class="accent">caffeinated</span>`;
 }
 
 function renderContact() {
