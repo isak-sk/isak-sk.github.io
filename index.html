@@ -1,46 +1,25 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>iskoog.dev</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <div class="terminal-wrapper">
-            <div class="titlebar">
-                <div class="titlebar-dot dot-red"></div>
-                <div class="titlebar-dot dot-yellow"></div>
-                <div class="titlebar-dot dot-green"></div>
-                <div class="titlebar-title">iskoog@dev — bash</div>
-                <div class="titlebar-status">
-                    <span class="dot-live"></span>online
-                </div>
-            </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-            <div class="terminal" id="terminal">
-                <div id="output"></div>
-            </div>
-        </div>
+    <style>
+      .jumbotron {
+        background-color: #e6ffe6;
+        text-align: center;
+      }
+    </style>
+  </head>
 
-        <div class="suggestions">
-            <div class="suggestions-inner" id="suggestions"></div>
-        </div>
-
-        <div class="input-wrapper">
-            <div class="input-area">
-                <span class="prompt">iskoog@dev:~$&nbsp;</span>
-                <input
-                    type="text"
-                    id="command"
-                    placeholder="type a command… (try 'help')"
-                    autofocus
-                    autocomplete="off"
-                    spellcheck="false"
-                />
-            </div>
-        </div>
-
-        <script src="script.js"></script>
-    </body>
+  <body>
+    <div id="elm-app-is-loaded-here"></div>
+    
+    <script src="elm.js"></script>
+    <script>
+      var app = Elm.HomePage.init({
+        node: document.getElementById("elm-app-is-loaded-here")
+      });      
+    </script>
+  </body>
 </html>
