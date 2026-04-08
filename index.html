@@ -1,25 +1,18 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" 
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <style>
-      .jumbotron {
-        background-color: #e6ffe6;
-        text-align: center;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="elm-app-is-loaded-here"></div>
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isak Skoog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="elm-node"></div>
     <script src="elm.js"></script>
     <script>
-      var app = Elm.HomePage.init({
-        node: document.getElementById("elm-app-is-loaded-here")
-      });      
+        var app = Elm.HomePage.init({
+            node: document.getElementById('elm-node')
+        });
     </script>
-  </body>
+</body>
 </html>
