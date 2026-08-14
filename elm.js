@@ -5305,7 +5305,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' | 2026 - 2029 | Bachelor of Science in Computer Science')
+										$elm$html$Html$text(' - Bachelor of Science in Computer Science | 2026 - 2029')
 									]))
 							])),
 						A2(
@@ -5328,7 +5328,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' | 2024 - 2026 | High school diploma for university admittance')
+										$elm$html$Html$text(' - High school diploma for university admittance | 2024 - 2026')
 									]))
 							])),
 						A2(
@@ -5351,7 +5351,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' | 2020 - 2024 | Technical Highschool during apprenticeship')
+										$elm$html$Html$text(' - Technical Highschool during apprenticeship | 2020 - 2024')
 									]))
 							]))
 					])),
@@ -5387,7 +5387,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' | 2024 - Present | Quantitative Software Engineer')
+										$elm$html$Html$text(' - Quantitative Software Engineer | 2024 - Present')
 									]))
 							])),
 						A2(
@@ -5410,7 +5410,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' | 05.2025 - 08.2025  | Software Engineer Intern')
+										$elm$html$Html$text(' - Software Engineer Intern | May 2025 - Aug. 2025')
 									]))
 							])),
 						A2(
@@ -5433,7 +5433,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' | 2020 - 2024 | Platform Engineer Apprentice')
+										$elm$html$Html$text(' - Platform Engineer Apprentice | 2020 - 2024')
 									]))
 							]))
 					])),

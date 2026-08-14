@@ -30,17 +30,17 @@ view _ =
         
         , section []
             [ h2 [] [ text "Education" ]
-            , div [ class "entry" ] [ b [] [ text "University of Gothenburg" ], span [] [ text " | 2026 - 2029 | Bachelor of Science in Computer Science" ] ]
-            , div [ class "entry" ] [ b [] [ text "Komvux Alingsås" ], span [] [ text " | 2024 - 2026 | High school diploma for university admittance" ] ]
-            , div [ class "entry" ] [ b [] [ text "Technische Berufsschule Zurich" ], span [] [ text " | 2020 - 2024 | Technical Highschool during apprenticeship" ] ]
+            , div [ class "entry" ] [ b [] [ text "University of Gothenburg" ], span [] [ text " - Bachelor of Science in Computer Science | 2026 - 2029" ] ]
+            , div [ class "entry" ] [ b [] [ text "Komvux Alingsås" ], span [] [ text " - High school diploma for university admittance | 2024 - 2026" ] ]
+            , div [ class "entry" ] [ b [] [ text "Technische Berufsschule Zurich" ], span [] [ text " - Technical Highschool during apprenticeship | 2020 - 2024" ] ]
             ]
 
 
         , section []
             [ h2 [] [ text "Experience" ]
-            , div [ class "entry" ] [ b [] [ text "Silverbeard Engineering AB" ], span [] [ text " | 2024 - Present | Quantitative Software Engineer" ] ]
-            , div [ class "entry" ] [ b [] [ text "Eniwa AG" ], span [] [ text " | 05.2025 - 08.2025  | Software Engineer Intern" ] ]
-            , div [ class "entry" ] [ b [] [ text "UBS" ], span [] [ text " | 2020 - 2024 | Platform Engineer Apprentice" ] ]
+            , div [ class "entry" ] [ b [] [ text "Silverbeard Engineering AB" ], span [] [ text " - Quantitative Software Engineer | 2024 - Present" ] ]
+            , div [ class "entry" ] [ b [] [ text "Eniwa AG" ], span [] [ text " - Software Engineer Intern | May 2025 - Aug. 2025" ] ]
+            , div [ class "entry" ] [ b [] [ text "UBS" ], span [] [ text " - Platform Engineer Apprentice | 2020 - 2024" ] ]
             ]
 
         , section []
