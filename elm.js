@@ -5305,7 +5305,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' - 2026 - 2029 - Bachelor of Science in Computer Science')
+										$elm$html$Html$text(' | 2026 - 2029 | Bachelor of Science in Computer Science')
 									]))
 							])),
 						A2(
@@ -5328,7 +5328,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' - 2024 - 2026 - High school diploma for university admittance')
+										$elm$html$Html$text(' | 2024 - 2026 | High school diploma for university admittance')
 									]))
 							])),
 						A2(
@@ -5351,7 +5351,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' - 2020 - 2024 - Technical Highschool during apprenticeship')
+										$elm$html$Html$text(' | 2020 - 2024 | Technical Highschool during apprenticeship')
 									]))
 							]))
 					])),
@@ -5380,14 +5380,14 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Silverbeard Engineering')
+										$elm$html$Html$text('Silverbeard Engineering AB')
 									])),
 								A2(
 								$elm$html$Html$span,
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' - 2025 - Present — Quantitative Software Engineer')
+										$elm$html$Html$text(' | 2024 - Present | Quantitative Software Engineer')
 									]))
 							])),
 						A2(
@@ -5410,7 +5410,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' - 05.2025 - 08.2025  — Software Engineer Intern (Switzerland)')
+										$elm$html$Html$text(' | 05.2025 - 08.2025  | Software Engineer Intern')
 									]))
 							])),
 						A2(
@@ -5433,7 +5433,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' - 2020 - 2024 — Platform Engineer Apprentice')
+										$elm$html$Html$text(' | 2020 - 2024 | Platform Engineer Apprentice')
 									]))
 							]))
 					])),
