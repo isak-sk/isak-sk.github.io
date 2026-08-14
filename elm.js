@@ -4506,8 +4506,8 @@ var $elm$core$String$split = F2(
 var $elm$json$Json$Decode$indent = function (str) {
 	return A2(
 		$elm$core$String$join,
-		'\n    ',
-		A2($elm$core$String$split, '\n', str));
+		'\u000A    ',
+		A2($elm$core$String$split, '\u000A', str));
 };
 var $elm$core$List$foldl = F3(
 	function (func, acc, list) {
@@ -4599,7 +4599,7 @@ var $elm$core$List$reverse = function (list) {
 var $elm$core$String$uncons = _String_uncons;
 var $elm$json$Json$Decode$errorOneOf = F2(
 	function (i, error) {
-		return '\n\n(' + ($elm$core$String$fromInt(i + 1) + (') ' + $elm$json$Json$Decode$indent(
+		return '\u000A\u000A(' + ($elm$core$String$fromInt(i + 1) + (') ' + $elm$json$Json$Decode$indent(
 			$elm$json$Json$Decode$errorToString(error))));
 	});
 var $elm$json$Json$Decode$errorToString = function (error) {
@@ -4624,7 +4624,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 							return $elm$core$Char$isAlpha(_char) && A2($elm$core$String$all, $elm$core$Char$isAlphaNum, rest);
 						}
 					}();
-					var fieldName = isSimple ? ('.' + f) : ('[\'' + (f + '\']'));
+					var fieldName = isSimple ? ('.' + f) : ('[\u0027' + (f + '\u0027]'));
 					var $temp$error = err,
 						$temp$context = A2($elm$core$List$cons, fieldName, context);
 					error = $temp$error;
@@ -4675,7 +4675,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 								$elm$core$List$length(errors)) + ' ways:'));
 							return A2(
 								$elm$core$String$join,
-								'\n\n',
+								'\u000A\u000A',
 								A2(
 									$elm$core$List$cons,
 									introduction,
@@ -4687,16 +4687,16 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					var json = error.b;
 					var introduction = function () {
 						if (!context.b) {
-							return 'Problem with the given value:\n\n';
+							return 'Problem with the given value:\u000A\u000A';
 						} else {
 							return 'Problem with the value at json' + (A2(
 								$elm$core$String$join,
 								'',
-								$elm$core$List$reverse(context)) + ':\n\n    ');
+								$elm$core$List$reverse(context)) + ':\u000A\u000A    ');
 						}
 					}();
 					return introduction + ($elm$json$Json$Decode$indent(
-						A2($elm$json$Json$Encode$encode, 4, json)) + ('\n\n' + msg));
+						A2($elm$json$Json$Encode$encode, 4, json)) + ('\u000A\u000A' + msg));
 			}
 		}
 	});
@@ -5270,16 +5270,88 @@ var $author$project$HomePage$view = function (_v0) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('Low-level enthusiast focusing on trading systems and infrastructure. I like '),
+								$elm$html$Html$text('Quant software engineer and computer science student based in Gothenburg, Sweden. Currently building quantitative trading systems while studying Computer Science. ')
+							]))
+					])),
+				A2(
+				$elm$html$Html$section,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$h2,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Education')
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('entry')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$b,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('University of Gothenburg')
+									])),
 								A2(
 								$elm$html$Html$span,
+								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$Attributes$class('lang')
-									]),
+										$elm$html$Html$text(' - 2026 - 2029 - Bachelor of Science in Computer Science')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('entry')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$b,
+								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text('Python, Rust and C.')
+										$elm$html$Html$text('Komvux Alingsås')
+									])),
+								A2(
+								$elm$html$Html$span,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text(' - 2024 - 2026 - High school diploma for university admittance')
+									]))
+							])),
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('entry')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$b,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Technische Berufsschule Zurich')
+									])),
+								A2(
+								$elm$html$Html$span,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text(' - 2020 - 2024 - Technical Highschool during apprenticeship')
 									]))
 							]))
 					])),
@@ -5315,7 +5387,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' — Software Engineer')
+										$elm$html$Html$text(' - 2025 - Present — Quantitative Software Engineer')
 									]))
 							])),
 						A2(
@@ -5338,7 +5410,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' — Software Engineer Intern (Switzerland)')
+										$elm$html$Html$text(' - 05.2025 - 08.2025  — Software Engineer Intern (Switzerland)')
 									]))
 							])),
 						A2(
@@ -5361,7 +5433,7 @@ var $author$project$HomePage$view = function (_v0) {
 								_List_Nil,
 								_List_fromArray(
 									[
-										$elm$html$Html$text(' — Platform Engineer Apprentice')
+										$elm$html$Html$text(' - 2020 - 2024 — Platform Engineer Apprentice')
 									]))
 							]))
 					])),
@@ -5375,29 +5447,29 @@ var $author$project$HomePage$view = function (_v0) {
 						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$text('Projects')
+								$elm$html$Html$text('Side Projects')
 							])),
 						A2(
 						$elm$html$Html$a,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$href('https://github.com/isak-sk/cli_launcher'),
+								$elm$html$Html$Attributes$href('https://github.com/isak-sk/PowerMatch'),
 								$elm$html$Html$Attributes$class('proj-link')
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('cli-launcher (Rust)')
+								$elm$html$Html$text('PowerMatch (archived internship project)')
 							])),
 						A2(
 						$elm$html$Html$a,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$href('https://github.com/isak-sk/battery_sim'),
+								$elm$html$Html$Attributes$href('https://github.com/isak-sk/influxdb_trmnl_plugin'),
 								$elm$html$Html$Attributes$class('proj-link')
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('battery-sim (Rust)')
+								$elm$html$Html$text('TRMNL plugin for energy usage')
 							])),
 						A2(
 						$elm$html$Html$a,
@@ -5408,7 +5480,7 @@ var $author$project$HomePage$view = function (_v0) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('epidemic-sim (Python)')
+								$elm$html$Html$text('Simulation of an epidemic')
 							]))
 					])),
 				A2(
