@@ -25,7 +25,3 @@ npm run build    # production build -> dist/
 
 Push to `main`. `.github/workflows/deploy.yml` builds the site and
 publishes `dist/` via GitHub Pages.
-
-**One-time setup:** in the repo's Settings → Pages, set "Source" to
-"GitHub Actions" (it's currently set to deploy the branch directly,
-which won't pick up the build output).
