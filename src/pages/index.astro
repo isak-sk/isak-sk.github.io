@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Terminal from '../components/Terminal.astro';
+import { intro, education, experience, projects, links } from '../data/resume';
+---
+
+<Layout title="Isak Skoog">
+  <section class="intro">
+    <img src="/img/img.jpeg" alt={intro.name} class="avatar" />
+    <h1>{intro.name}</h1>
+    <p class="tagline">{intro.tagline}</p>
+    <p class="bio">{intro.bio}</p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    {education.map((entry) => (
+      <div class="entry"><b>{entry.title}</b><span> - {entry.detail}</span></div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    {experience.map((entry) => (
+      <div class="entry"><b>{entry.title}</b><span> - {entry.detail}</span></div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Side Projects</h2>
+    {projects.map((project) => (
+      <a href={project.href} class="proj-link">{project.label}</a>
+    ))}
+  </section>
+
+  <footer>
+    {links.map((link, i) => (
+      <>
+        {i > 0 && ' / '}
+        <a href={link.href}>{link.label}</a>
+      </>
+    ))}
+  </footer>
+
+  <Terminal />
+</Layout>

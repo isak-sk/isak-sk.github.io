@@ -1,0 +1,115 @@
+---
+import { projects, links } from '../data/resume';
+---
+
+<section class="mini-term">
+  <p class="mini-term-label">// poke around</p>
+  <div class="term">
+    <div class="term-output" id="term-output">
+      <div>guest@iskoog:~$ type 'help'</div>
+    </div>
+    <div class="term-input-row">
+      <span>guest@iskoog:~$</span>
+      <input id="term-input" type="text" autocomplete="off" spellcheck="false" aria-label="tiny terminal input" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .mini-term {
+    margin-top: 50px;
+  }
+
+  .mini-term-label {
+    color: #999;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+  }
+
+  .term {
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 0.78rem;
+    background: #fafafa;
+  }
+
+  .term-output {
+    max-height: 110px;
+    overflow-y: auto;
+    color: #444;
+  }
+
+  .term-output div {
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-bottom: 2px;
+  }
+
+  .term-input-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    color: #111;
+  }
+
+  .term-input-row span {
+    color: #999;
+    flex-shrink: 0;
+  }
+
+  #term-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    outline: none;
+  }
+</style>
+
+<script define:vars={{ projects, links }}>
+  const output = document.getElementById('term-output');
+  const input = document.getElementById('term-input');
+
+  const print = (text) => {
+    const line = document.createElement('div');
+    line.textContent = text;
+    output.appendChild(line);
+    output.scrollTop = output.scrollHeight;
+  };
+
+  const commands = {
+    help: () => 'commands: help, whoami, projects, links, joke, date, sudo, clear',
+    whoami: () => 'just a visitor. (or is it isak? who can say)',
+    projects: () => projects.map((p) => `- ${p.label}`).join('\n'),
+    links: () => links.map((l) => `- ${l.label}: ${l.href}`).join('\n'),
+    date: () => new Date().toString(),
+    joke: () =>
+      [
+        "there are 10 types of people: those who understand binary and those who don't",
+        'a SQL query walks into a bar, walks up to two tables and asks: "can i join you?"',
+        "!false — it's funny because it's true",
+      ][Math.floor(Math.random() * 3)],
+    sudo: () => 'nice try. permission denied.',
+    clear: () => null,
+  };
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const raw = input.value.trim();
+    input.value = '';
+    if (!raw) return;
+
+    print(`guest@iskoog:~$ ${raw}`);
+    const [cmd] = raw.toLowerCase().split(/\s+/);
+
+    if (cmd === 'clear') {
+      output.innerHTML = '';
+      return;
+    }
+
+    const handler = commands[cmd];
+    print(handler ? handler() : `command not found: ${cmd} (try 'help')`);
+  });
+</script>
