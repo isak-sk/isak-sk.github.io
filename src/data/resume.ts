@@ -1,6 +1,7 @@
 export interface Entry {
   title: string;
-  detail: string;
+  role: string;
+  period: string;
 }
 
 export interface Project {
@@ -15,15 +16,15 @@ export const intro = {
 };
 
 export const education: Entry[] = [
-  { title: 'University of Gothenburg', detail: 'Bachelor of Science in Computer Science | 2026 - 2029' },
-  { title: 'Komvux Alingsås', detail: 'High school diploma for university admittance | 2024 - 2026' },
-  { title: 'Technische Berufsschule Zurich', detail: 'Technical Highschool during apprenticeship | 2020 - 2024' },
+  { title: 'University of Gothenburg', role: 'Bachelor of Science in Computer Science', period: '2026 - 2029' },
+  { title: 'Komvux Alingsås', role: 'High school diploma for university admittance', period: '2024 - 2026' },
+  { title: 'Technische Berufsschule Zurich', role: 'Technical Highschool during apprenticeship', period: '2020 - 2024' },
 ];
 
 export const experience: Entry[] = [
-  { title: 'Silverbeard Engineering AB', detail: 'Quantitative Software Engineer | 2024 - Present' },
-  { title: 'Eniwa AG', detail: 'Software Engineer Intern | May 2025 - Aug. 2025' },
-  { title: 'UBS', detail: 'Platform Engineer Apprentice | 2020 - 2024' },
+  { title: 'Silverbeard Engineering AB', role: 'Quantitative Software Engineer', period: '2024 - Present' },
+  { title: 'Eniwa AG', role: 'Software Engineer Intern', period: 'May 2025 - Aug. 2025' },
+  { title: 'UBS', role: 'Platform Engineer Apprentice', period: '2020 - 2024' },
 ];
 
 export const projects: Project[] = [

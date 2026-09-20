@@ -15,14 +15,20 @@ import { intro, education, experience, projects, links } from '../data/resume';
   <section>
     <h2>Education</h2>
     {education.map((entry) => (
-      <div class="entry"><b>{entry.title}</b><span> - {entry.detail}</span></div>
+      <div class="entry">
+        <div class="entry-head"><b>{entry.title}</b><span class="period">{entry.period}</span></div>
+        <div class="role">{entry.role}</div>
+      </div>
     ))}
   </section>
 
   <section>
     <h2>Experience</h2>
     {experience.map((entry) => (
-      <div class="entry"><b>{entry.title}</b><span> - {entry.detail}</span></div>
+      <div class="entry">
+        <div class="entry-head"><b>{entry.title}</b><span class="period">{entry.period}</span></div>
+        <div class="role">{entry.role}</div>
+      </div>
     ))}
   </section>
 

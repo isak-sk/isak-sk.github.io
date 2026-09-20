@@ -1,0 +1,101 @@
+<pre id="ascii-sphere" class="ascii-sphere" aria-hidden="true"></pre>
+
+<style>
+  .ascii-sphere {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    margin: 0;
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+    font-size: 8px;
+    line-height: 1;
+    color: #ddd;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 1000px) {
+    .ascii-sphere {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const el = document.getElementById('ascii-sphere');
+
+  if (el) {
+    const sphere: HTMLElement = el;
+    const cols = 42;
+    const rows = 22;
+    const chars = ' .,-~:;=!*#$@';
+    const R = 1;
+    const K1 = cols * 0.38;
+    const K2 = 3;
+    const lightDir = normalize({ x: 0, y: 1, z: -1 });
+
+    let A = 0;
+    let B = 0.4;
+
+    function normalize(v: { x: number; y: number; z: number }) {
+      const len = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+      return { x: v.x / len, y: v.y / len, z: v.z / len };
+    }
+
+    function render() {
+      const output: string[][] = Array.from({ length: rows }, () => Array(cols).fill(' '));
+      const zbuffer: number[][] = Array.from({ length: rows }, () => Array(cols).fill(-Infinity));
+
+      const cosA = Math.cos(A), sinA = Math.sin(A);
+      const cosB = Math.cos(B), sinB = Math.sin(B);
+
+      for (let theta = 0; theta < Math.PI * 2; theta += 0.06) {
+        const ct = Math.cos(theta), st = Math.sin(theta);
+        for (let phi = 0; phi < Math.PI; phi += 0.06) {
+          const cp = Math.cos(phi), sp = Math.sin(phi);
+
+          const x = R * sp * ct;
+          const y = R * sp * st;
+          const z = R * cp;
+
+          const x1 = x * cosA + z * sinA;
+          const z1 = -x * sinA + z * cosA;
+          const y1 = y * cosB - z1 * sinB;
+          const z2 = y * sinB + z1 * cosB;
+
+          const scale = K2 / (K2 + z2);
+          const px = Math.round(cols / 2 + K1 * scale * x1);
+          const py = Math.round(rows / 2 - K1 * 0.5 * scale * y1);
+
+          if (px < 0 || px >= cols || py < 0 || py >= rows) continue;
+          if (z2 <= zbuffer[py][px]) continue;
+
+          zbuffer[py][px] = z2;
+          const lum = x1 * lightDir.x + y1 * lightDir.y + z2 * lightDir.z;
+          const idx = Math.max(0, Math.min(chars.length - 1, Math.floor(((lum + 1) / 2) * chars.length)));
+          output[py][px] = chars[idx];
+        }
+      }
+
+      sphere.textContent = output.map((row) => row.join('')).join('\n');
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      render();
+    } else {
+      let last = performance.now();
+      const loop = (now: number) => {
+        const dt = (now - last) / 1000;
+        last = now;
+        A += dt * 0.6;
+        B += dt * 0.25;
+        render();
+        requestAnimationFrame(loop);
+      };
+      requestAnimationFrame(loop);
+    }
+  }
+</script>

@@ -1,5 +1,5 @@
 ---
-import { projects, links } from '../data/resume';
+import { intro, projects, links } from '../data/resume';
 ---
 
 <section class="mini-term">
@@ -68,7 +68,7 @@ import { projects, links } from '../data/resume';
   }
 </style>
 
-<script define:vars={{ projects, links }}>
+<script define:vars={{ bio: intro.bio, projects, links }}>
   const output = document.getElementById('term-output');
   const input = document.getElementById('term-input');
 
@@ -80,18 +80,11 @@ import { projects, links } from '../data/resume';
   };
 
   const commands = {
-    help: () => 'commands: help, whoami, projects, links, joke, date, sudo, clear',
-    whoami: () => 'just a visitor. (or is it isak? who can say)',
+    help: () => 'commands: help, about, projects, links, date, clear',
+    about: () => bio,
     projects: () => projects.map((p) => `- ${p.label}`).join('\n'),
     links: () => links.map((l) => `- ${l.label}: ${l.href}`).join('\n'),
     date: () => new Date().toString(),
-    joke: () =>
-      [
-        "there are 10 types of people: those who understand binary and those who don't",
-        'a SQL query walks into a bar, walks up to two tables and asks: "can i join you?"',
-        "!false — it's funny because it's true",
-      ][Math.floor(Math.random() * 3)],
-    sudo: () => 'nice try. permission denied.',
     clear: () => null,
   };
 

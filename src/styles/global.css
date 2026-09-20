@@ -3,9 +3,10 @@ body {
     color: #111;
     font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
     line-height: 1.5;
-    max-width: 650px;
+    max-width: 700px;
     margin: 40px auto;
     padding: 0 20px;
+    position: relative;
 }
 
 .avatar {
@@ -23,7 +24,31 @@ h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-t
 .bio { margin-top: 20px; }
 .lang { color: #000; font-weight: bold; }
 
-.entry { margin-bottom: 10px; font-size: 0.9rem; }
+.entry {
+    margin-bottom: 18px;
+    padding-left: 14px;
+    border-left: 2px solid #eee;
+    font-size: 0.9rem;
+}
+
+.entry-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 16px;
+}
+
+.period {
+    color: #999;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.role {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 2px;
+}
 .proj-link { display: block; color: #111; text-decoration: none; margin-bottom: 8px; font-size: 0.9rem; }
 .proj-link:hover { text-decoration: underline; color: #0070f3; }
 
