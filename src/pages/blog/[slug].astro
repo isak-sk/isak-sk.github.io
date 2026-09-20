@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} — Isak Skoog`}>
+  <article class="post">
+    <h1>{post.data.title}</h1>
+    <p class="period">{post.data.date.toISOString().slice(0, 10)}</p>
+    <div class="post-body prose">
+      <Content />
+    </div>
+  </article>
+
+  <p class="back"><a href="/blog/">← back to blog</a></p>
+</Layout>
+
+<style>
+  .post h1 {
+    margin-bottom: 4px;
+  }
+
+  .back {
+    margin-top: 40px;
+    font-size: 0.85rem;
+  }
+
+  .back a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .back a:hover {
+    color: #000;
+  }
+</style>

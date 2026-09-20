@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout title="Blog — Isak Skoog">
+  <section>
+    <h2>Blog</h2>
+    {posts.map((post) => (
+      <div class="entry">
+        <div class="entry-head">
+          <b><a class="post-link" href={`/blog/${post.id}/`}>{post.data.title}</a></b>
+          <span class="period">{post.data.date.toISOString().slice(0, 10)}</span>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <p class="back"><a href="/">← back</a></p>
+</Layout>
+
+<style>
+  .post-link {
+    color: #111;
+    text-decoration: none;
+  }
+
+  .post-link:hover {
+    text-decoration: underline;
+    color: #0070f3;
+  }
+
+  .back {
+    margin-top: 40px;
+    font-size: 0.85rem;
+  }
+
+  .back a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .back a:hover {
+    color: #000;
+  }
+</style>

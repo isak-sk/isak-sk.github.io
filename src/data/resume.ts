@@ -34,6 +34,7 @@ export const projects: Project[] = [
 ];
 
 export const links: Project[] = [
+  { label: 'blog', href: '/blog/' },
   { label: 'github', href: 'https://github.com/isak-sk' },
   { label: 'linkedin', href: 'https://linkedin.com/in/isakskoog' },
   { label: 'email', href: 'mailto:skoog.isak@gmail.com' },
