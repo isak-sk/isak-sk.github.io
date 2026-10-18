@@ -1,0 +1,128 @@
+---
+import data from '../data/contributions.json';
+import accounts from '../data/accounts.json';
+
+const days = data.days as Record<string, number>;
+const DAY = 86400000;
+const CELL = 11;
+const STEP = 14;
+const LEFT = 28;
+const TOP = 16;
+const WEEKS = 53;
+
+// Work in UTC so dates match the ones GitHub returns.
+const today = new Date();
+const end = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
+const lastSunday = end.valueOf() - end.getUTCDay() * DAY;
+const start = lastSunday - (WEEKS - 1) * 7 * DAY;
+
+const max = Math.max(0, ...Object.values(days));
+const level = (n: number) => (n === 0 ? 0 : Math.max(1, Math.ceil((4 * n) / max)));
+const fills = ['#eee', '#ccc', '#999', '#666', '#111'];
+
+const fmt = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeZone: 'UTC' });
+const monthFmt = new Intl.DateTimeFormat('en-GB', { month: 'short', timeZone: 'UTC' });
+
+const cells: { x: number; y: number; n: number; label: string }[] = [];
+const months: { x: number; text: string }[] = [];
+let total = 0;
+let lastMonth = -1;
+
+for (let w = 0; w < WEEKS; w++) {
+  for (let d = 0; d < 7; d++) {
+    const t = start + (w * 7 + d) * DAY;
+    if (t > end.valueOf()) continue;
+    const date = new Date(t);
+    const key = date.toISOString().slice(0, 10);
+    const n = days[key] ?? 0;
+    total += n;
+    if (d === 0 && date.getUTCMonth() !== lastMonth && date.getUTCDate() <= 7) {
+      lastMonth = date.getUTCMonth();
+      months.push({ x: LEFT + w * STEP, text: monthFmt.format(date) });
+    }
+    cells.push({
+      x: LEFT + w * STEP,
+      y: TOP + d * STEP,
+      n,
+      label: `${n} contribution${n === 1 ? '' : 's'} on ${fmt.format(date)}`,
+    });
+  }
+}
+
+const width = LEFT + WEEKS * STEP;
+const height = TOP + 7 * STEP;
+const hasData = data.generated !== null;
+---
+
+<div class="graph">
+  <div class="graph-scroll">
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      role="img"
+      aria-label={`${total} contributions in the last year across ${accounts.length} GitHub accounts`}
+    >
+      {months.map((m) => <text x={m.x} y="10" class="lbl">{m.text}</text>)}
+      <text x="0" y={TOP + 1 * STEP + 9} class="lbl">Mon</text>
+      <text x="0" y={TOP + 3 * STEP + 9} class="lbl">Wed</text>
+      <text x="0" y={TOP + 5 * STEP + 9} class="lbl">Fri</text>
+      {cells.map((c) => (
+        <rect x={c.x} y={c.y} width={CELL} height={CELL} rx="2" fill={fills[level(c.n)]}>
+          <title>{c.label}</title>
+        </rect>
+      ))}
+    </svg>
+  </div>
+  <div class="graph-foot">
+    <span>
+      {hasData
+        ? `${total} contributions in the last year, ${accounts.map((a) => a.username).join(' + ')}`
+        : 'TODO: no data yet. It fills in after the Contributions workflow has run once.'}
+    </span>
+    <span class="legend" aria-hidden="true">
+      0
+      {fills.map((f) => <svg width={CELL} height={CELL}><rect width={CELL} height={CELL} rx="2" fill={f} /></svg>)}
+      {max || 'max'}
+    </span>
+  </div>
+</div>
+
+<style>
+  .graph-scroll {
+    overflow-x: auto;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    min-width: 560px;
+    height: auto;
+  }
+
+  .lbl {
+    font-size: 9px;
+    fill: #999;
+  }
+
+  .graph-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 16px;
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: #999;
+  }
+
+  .legend svg {
+    display: inline-block;
+    min-width: 0;
+    width: 11px;
+  }
+</style>

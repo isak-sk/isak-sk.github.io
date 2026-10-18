@@ -20,7 +20,7 @@ a:hover { color: #0070f3; text-decoration: underline; }
     margin-bottom: 20px;
 }
 
-h1 { font-size: 1.5rem; margin-bottom: 5px; }
+h1 { font-size: 1.5rem; margin-top: 0; margin-bottom: 5px; }
 h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 40px; color: #666; }
 
 .tagline { color: #666; margin-top: 0; font-size: 0.9rem; }
@@ -75,3 +75,27 @@ footer a:hover { color: #000; text-decoration: none; }
 .prose pre code { background: none; padding: 0; }
 .prose blockquote { margin: 0 0 16px; padding-left: 12px; border-left: 2px solid #eee; color: #666; }
 .prose a { text-decoration: underline; }
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-size: 0.85rem;
+    padding-bottom: 14px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+.nav a { color: #666; }
+.nav a:hover { color: #000; text-decoration: none; }
+.nav a[aria-current] { color: #111; text-decoration: underline; }
+.nav-home { font-weight: bold; margin-right: auto; }
+
+.page-links { margin-top: 24px; font-size: 0.9rem; }
+.page-links a { margin-right: 18px; }
+
+.proj { margin-bottom: 18px; font-size: 0.9rem; }
+.proj .role { margin-top: 2px; }
+
+.prose pre.astro-code { background-color: #f5f5f5 !important; }
+.todo { color: #999; }
+.note { color: #666; font-size: 0.8rem; }

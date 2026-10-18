@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContributionGraph from '../components/ContributionGraph.astro';
+import { intro } from '../data/resume';
+---
+
+<Layout title="About — Isak Skoog" description="About Isak Skoog">
+  <h1>About</h1>
+  <div class="prose">
+    <p>
+      I'm {intro.age} and live in Gothenburg. I started programming around 13 with Python. At 16 I began an
+      apprenticeship at UBS, which is where I started working in software professionally.
+    </p>
+    <p>
+      I work as a quantitative software engineer at Silverbeard Engineering, on the data and execution backend of
+      our trading systems, in Rust and Python. I also study computer science at the University of Gothenburg.
+    </p>
+    <p>
+      Outside of work I do some coding on the side and work out. After the apprenticeship I went back to Komvux to
+      finish high school<sup><a href="#note-komvux">1</a></sup>.
+    </p>
+    <p id="note-komvux" class="note">
+      <sup>1</sup> The Swedish university system didn't accept my apprenticeship as a high school diploma, so I
+      took the missing courses at Komvux.
+    </p>
+  </div>
+
+  <section>
+    <h2>Contributions</h2>
+    <ContributionGraph />
+  </section>
+</Layout>

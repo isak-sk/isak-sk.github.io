@@ -1,0 +1,77 @@
+# Merges the last year of contributions from every account in
+# src/data/accounts.json into src/data/contributions.json.
+#
+# Each account needs its own repo secret (named by "tokenSecret" in
+# accounts.json) holding a token created by that account. A classic PAT with
+# the read:user scope is enough; add repo to count private contributions.
+# For private contributions to show up, the account must also have
+# "Include private contributions on my profile" turned on.
+name: Contributions
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        env:
+          SECRETS: ${{ toJSON(secrets) }}
+        with:
+          script: |
+            const fs = require('fs');
+            const accounts = JSON.parse(fs.readFileSync('src/data/accounts.json', 'utf8'));
+            const secrets = JSON.parse(process.env.SECRETS);
+            const to = new Date();
+            const from = new Date(to.getTime() - 364 * 86400000);
+            const query = `query($login: String!, $from: DateTime!, $to: DateTime!) {
+              user(login: $login) {
+                contributionsCollection(from: $from, to: $to) {
+                  contributionCalendar { weeks { contributionDays { date contributionCount } } }
+                }
+              }
+            }`;
+            const days = {};
+            for (const { username, tokenSecret } of accounts) {
+              const token = secrets[tokenSecret];
+              if (!token) throw new Error(`Missing secret ${tokenSecret} for ${username}`);
+              const res = await fetch('https://api.github.com/graphql', {
+                method: 'POST',
+                headers: { Authorization: `bearer ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  query,
+                  variables: { login: username, from: from.toISOString(), to: to.toISOString() },
+                }),
+              });
+              const json = await res.json();
+              if (!res.ok || json.errors) throw new Error(`${username}: ${JSON.stringify(json.errors ?? res.status)}`);
+              const weeks = json.data.user.contributionsCollection.contributionCalendar.weeks;
+              for (const week of weeks) {
+                for (const day of week.contributionDays) {
+                  days[day.date] = (days[day.date] ?? 0) + day.contributionCount;
+                }
+              }
+            }
+            const sorted = Object.fromEntries(Object.entries(days).sort(([a], [b]) => a.localeCompare(b)));
+            fs.writeFileSync(
+              'src/data/contributions.json',
+              JSON.stringify({ generated: to.toISOString().slice(0, 10), days: sorted }, null, 2) + '\n'
+            );
+      - name: Commit and redeploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Update contributions"
+          git push
+          # Pushes made with GITHUB_TOKEN don't trigger the deploy workflow.
+          gh workflow run deploy.yml

@@ -1,52 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Terminal from '../components/Terminal.astro';
-import { intro, education, experience, projects, links } from '../data/resume';
+import { intro, pages } from '../data/resume';
 ---
 
-<Layout title="Isak Skoog">
+<Layout title="Isak Skoog" description={intro.line}>
   <section class="intro">
     <img src="/img/img.jpeg" alt={intro.name} class="avatar" />
     <h1>{intro.name}</h1>
-    <p class="tagline">{intro.tagline}</p>
-    <p class="bio">{intro.bio}</p>
+    <p class="tagline">{intro.age}yo · {intro.role}</p>
+    <p class="bio">{intro.line}</p>
+    <p class="page-links">
+      {pages.map((page) => <a href={page.href}>{page.label}</a>)}
+    </p>
   </section>
-
-  <section>
-    <h2>Education</h2>
-    {education.map((entry) => (
-      <div class="entry">
-        <div class="entry-head"><b>{entry.title}</b><span class="period">{entry.period}</span></div>
-        <div class="role">{entry.role}</div>
-      </div>
-    ))}
-  </section>
-
-  <section>
-    <h2>Experience</h2>
-    {experience.map((entry) => (
-      <div class="entry">
-        <div class="entry-head"><b>{entry.title}</b><span class="period">{entry.period}</span></div>
-        <div class="role">{entry.role}</div>
-      </div>
-    ))}
-  </section>
-
-  <section>
-    <h2>Side Projects</h2>
-    {projects.map((project) => (
-      <a href={project.href} class="proj-link">{project.label}</a>
-    ))}
-  </section>
-
-  <footer>
-    {links.map((link, i) => (
-      <>
-        {i > 0 && ' / '}
-        <a href={link.href}>{link.label}</a>
-      </>
-    ))}
-  </footer>
-
-  <Terminal />
 </Layout>

@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { education, experience } from '../data/resume';
+---
+
+<Layout title="CV — Isak Skoog" description="Education and experience">
+  <h1>CV</h1>
+
+  <section>
+    <h2>Education</h2>
+    {education.map((entry) => (
+      <div class="entry">
+        <div class="entry-head"><b>{entry.title}</b><span class="period">{entry.period}</span></div>
+        <div class="role">{entry.role}</div>
+      </div>
+    ))}
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    {experience.map((entry) => (
+      <div class="entry">
+        <div class="entry-head"><b>{entry.title}</b><span class="period">{entry.period}</span></div>
+        <div class="role">{entry.role}</div>
+      </div>
+    ))}
+  </section>
+</Layout>

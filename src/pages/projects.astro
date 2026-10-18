@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/resume';
+---
+
+<Layout title="Projects — Isak Skoog" description="Side projects">
+  <h1>Projects</h1>
+  <section>
+    {projects.map((project) => (
+      <div class="proj">
+        <a href={project.href}><b>{project.label}</b></a>
+        <div class="role">{project.description}</div>
+      </div>
+    ))}
+  </section>
+</Layout>

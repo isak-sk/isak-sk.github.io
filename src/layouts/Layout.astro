@@ -1,12 +1,15 @@
 ---
 import '../styles/global.css';
 import AsciiLambda from '../components/AsciiLambda.astro';
+import { intro, pages, links } from '../data/resume';
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+const path = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -15,11 +18,27 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="alternate" type="application/rss+xml" title="Isak Skoog" href="/rss.xml" />
   </head>
   <body>
     <AsciiLambda />
+    <nav class="nav" aria-label="Main">
+      <a href="/" class="nav-home" aria-current={path === '/' ? 'page' : undefined}>{intro.name}</a>
+      {pages.map((page) => (
+        <a href={page.href} aria-current={path.startsWith(page.href) ? 'page' : undefined}>{page.label}</a>
+      ))}
+    </nav>
     <main>
       <slot />
     </main>
+    <footer>
+      {links.map((link, i) => (
+        <>
+          {i > 0 && ' / '}
+          <a href={link.href}>{link.label}</a>
+        </>
+      ))}
+    </footer>
   </body>
 </html>

@@ -7,12 +7,22 @@ export interface Entry {
 export interface Project {
   label: string;
   href: string;
+  description: string;
 }
+
+export interface Link {
+  label: string;
+  href: string;
+}
+
+// Only the year is stored so the age can be computed at build time.
+const birthYear = 2004;
 
 export const intro = {
   name: 'Isak Skoog',
-  tagline: '21yo · CS Student · Quant Dev @ Silverbeard Engineering',
-  bio: 'Quant software engineer and computer science student based in Gothenburg, Sweden. Currently building quantitative trading systems while studying Computer Science.',
+  age: new Date().getFullYear() - birthYear,
+  role: 'CS Student · Quant Dev @ Silverbeard Engineering',
+  line: 'Quant software engineer and computer science student in Gothenburg, Sweden.',
 };
 
 export const education: Entry[] = [
@@ -28,14 +38,33 @@ export const experience: Entry[] = [
 ];
 
 export const projects: Project[] = [
-  { label: 'PowerMatch (archived internship project)', href: 'https://github.com/isak-sk/PowerMatch' },
-  { label: 'TRMNL plugin for energy usage', href: 'https://github.com/isak-sk/influxdb_trmnl_plugin' },
-  { label: 'Simulation of an epidemic', href: 'https://github.com/isak-sk/epidemic-sim' },
+  {
+    label: 'PowerMatch',
+    href: 'https://github.com/isak-sk/PowerMatch',
+    description: 'An energy game made during my internship at Eniwa for the Berufsmesse Aarau career fair. Archived.',
+  },
+  {
+    label: 'TRMNL energy usage plugin',
+    href: 'https://github.com/isak-sk/influxdb_trmnl_plugin',
+    description: 'A TRMNL plugin that shows energy usage over time. The data comes from smart devices and is stored in InfluxDB.',
+  },
+  {
+    label: 'Epidemic simulation',
+    href: 'https://github.com/isak-sk/epidemic-sim',
+    description: 'An epidemic simulation in Python, my final project at Komvux.',
+  },
 ];
 
-export const links: Project[] = [
+export const pages: Link[] = [
+  { label: 'about', href: '/about/' },
+  { label: 'cv', href: '/cv/' },
+  { label: 'projects', href: '/projects/' },
   { label: 'blog', href: '/blog/' },
+];
+
+export const links: Link[] = [
   { label: 'github', href: 'https://github.com/isak-sk' },
   { label: 'linkedin', href: 'https://linkedin.com/in/isakskoog' },
   { label: 'email', href: 'mailto:skoog.isak@gmail.com' },
+  { label: 'rss', href: '/rss.xml' },
 ];
