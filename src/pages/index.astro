@@ -1,16 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { intro, pages } from '../data/resume';
+import ContributionGraph from '../components/ContributionGraph.astro';
+import { intro } from '../data/resume';
 ---
 
 <Layout title="Isak Skoog" description={intro.line}>
   <section class="intro">
     <img src="/img/img.jpeg" alt={intro.name} class="avatar" />
     <h1>{intro.name}</h1>
-    <p class="tagline">{intro.age}yo · {intro.role}</p>
-    <p class="bio">{intro.line}</p>
-    <p class="page-links">
-      {pages.map((page) => <a href={page.href}>{page.label}</a>)}
+    <p class="tagline">{intro.role}</p>
+  </section>
+
+  <div class="prose">
+    <p>
+      I'm a software engineer at Silverbeard Engineering and study computer science at the University of
+      Gothenburg, where I live.
     </p>
+    <p>
+      I've been coding for 5+ years, and started working professionally with an apprenticeship at UBS.
+    </p>
+    <p>Outside of work I enjoy skiing, hiking, working out, and coding.</p>
+  </div>
+
+  <section>
+    <h2>Contributions</h2>
+    <ContributionGraph />
   </section>
 </Layout>

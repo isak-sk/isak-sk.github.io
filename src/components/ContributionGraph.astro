@@ -18,7 +18,7 @@ const start = lastSunday - (WEEKS - 1) * 7 * DAY;
 
 const max = Math.max(0, ...Object.values(days));
 const level = (n: number) => (n === 0 ? 0 : Math.max(1, Math.ceil((4 * n) / max)));
-const fills = ['#eee', '#ccc', '#999', '#666', '#111'];
+const fills = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'];
 
 const fmt = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeZone: 'UTC' });
 const monthFmt = new Intl.DateTimeFormat('en-GB', { month: 'short', timeZone: 'UTC' });

@@ -90,12 +90,9 @@ footer a:hover { color: #000; text-decoration: none; }
 .nav a[aria-current] { color: #111; text-decoration: underline; }
 .nav-home { font-weight: bold; margin-right: auto; }
 
-.page-links { margin-top: 24px; font-size: 0.9rem; }
-.page-links a { margin-right: 18px; }
 
 .proj { margin-bottom: 18px; font-size: 0.9rem; }
 .proj .role { margin-top: 2px; }
 
 .prose pre.astro-code { background-color: #f5f5f5 !important; }
 .todo { color: #999; }
-.note { color: #666; font-size: 0.8rem; }

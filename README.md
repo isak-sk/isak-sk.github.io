@@ -5,8 +5,7 @@ Minimalist homepage, built with [Astro](https://astro.build).
 ## Structure
 
 - `src/data/resume.ts` — intro, education, experience, projects, links.
-- `src/pages/` — home, about, cv, projects, blog and `rss.xml`.
-- `src/content/blog/` — blog posts as Markdown.
+- `src/pages/` — home, cv and projects.
 - `src/data/accounts.json` — GitHub accounts merged into the contribution graph.
 - `src/styles/global.css` — global styles.
 
