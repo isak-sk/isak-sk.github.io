@@ -1,5 +1,4 @@
----
-const art = `⠀⠀⢀⣤⣤⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+<pre class="ascii-lambda" aria-hidden="true">⠀⠀⢀⣤⣤⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⢸⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠘⠉⠉⠙⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀
@@ -9,66 +8,11 @@ const art = `⠀⠀⢀⣤⣤⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⣰⣿⣿⣿⡏⠀⠸⣿⣿⣿⣇⠀⠀⠀
 ⠀⠀⢠⣿⣿⣿⡟⠀⠀⠀⢻⣿⣿⣿⡆⠀⠀
 ⠀⢠⣿⣿⣿⡿⠀⠀⠀⠀⠀⢿⣿⣿⣷⣤⡄
-⢀⣾⣿⣿⣿⠁⠀⠀⠀⠀⠀⠈⠿⣿⣿⣿⡇`;
-const lines = art.split('\n').map((l) => [...l]);
----
-
-<pre class="ascii-lambda" aria-hidden="true">{lines.map((line, i) => (
-  <>{line.map((c) => (c === '⠀' ? c : <span>{c}</span>))}{i < lines.length - 1 ? '\n' : ''}</>
-))}</pre>
-
-<script>
-  // Cells near the pointer light up and fade back as it moves away.
-  const pre = document.querySelector<HTMLElement>('.ascii-lambda');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  if (pre && !reduced.matches) {
-    const cells = [...pre.querySelectorAll<HTMLElement>('span')];
-    const RADIUS = 160;
-    let centers: { x: number; y: number }[] = [];
-    let pointer: { x: number; y: number } | null = null;
-    let queued = false;
-
-    const measure = () => {
-      centers = cells.map((el) => {
-        const r = el.getBoundingClientRect();
-        return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-      });
-    };
-
-    const paint = () => {
-      queued = false;
-      cells.forEach((el, i) => {
-        let k = 0;
-        if (pointer) {
-          const d = Math.hypot(centers[i].x - pointer.x, centers[i].y - pointer.y);
-          k = Math.max(0, 1 - d / RADIUS) ** 2;
-        }
-        el.style.setProperty('--k', k.toFixed(3));
-      });
-    };
-
-    const update = (p: { x: number; y: number } | null) => {
-      pointer = p;
-      if (!queued) {
-        queued = true;
-        requestAnimationFrame(paint);
-      }
-    };
-
-    measure();
-    window.addEventListener('resize', measure);
-    window.addEventListener('pointermove', (e) => update({ x: e.clientX, y: e.clientY }), { passive: true });
-    document.addEventListener('pointerleave', () => update(null));
-    window.addEventListener('blur', () => update(null));
-  }
-</script>
+⢀⣾⣿⣿⣿⠁⠀⠀⠀⠀⠀⠈⠿⣿⣿⣿⡇</pre>
 
 <style>
-  /* Default: a faint watermark centered behind the content, so it shows on every screen size. */
+  /* A static, faint watermark centered behind the content. */
   .ascii-lambda {
-    --base: 0.1;
-    --peak: 0.5;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -77,24 +21,10 @@ const lines = art.split('\n').map((l) => [...l]);
     font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
     font-size: 28px;
     line-height: 1;
+    color: #111;
+    opacity: 0.05;
     user-select: none;
     pointer-events: none;
     z-index: 0;
-  }
-
-  .ascii-lambda :global(span) {
-    color: rgb(17 17 17 / calc(var(--base) + (var(--peak) - var(--base)) * var(--k, 0)));
-    transition: color 0.25s ease-out;
-  }
-
-  /* With clear space beside the (700px, centered) content column, show it there at normal strength. */
-  @media (min-width: 1600px) {
-    .ascii-lambda {
-      --base: 0.45;
-      --peak: 0.9;
-      left: calc(50% + 390px);
-      transform: translateY(-50%);
-      font-size: 24px;
-    }
   }
 </style>
