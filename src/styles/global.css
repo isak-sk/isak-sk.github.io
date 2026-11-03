@@ -99,3 +99,5 @@ footer a:hover { color: #000; text-decoration: none; }
 
 /* Keep content above the background lambda. */
 .nav, main, footer { position: relative; z-index: 1; }
+
+.desc { font-size: 0.85rem; margin-top: 6px; }
